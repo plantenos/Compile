@@ -1,12 +1,12 @@
 PROGRAM = Compile
 VERSION = git-$(shell date +%Y%m%d)
-goboPrograms ?= /Programs
+plan10Programs ?= /Programs
 PREFIX ?=
-DESTDIR = $(PREFIX)/$(goboPrograms)/$(PROGRAM)/$(VERSION)
+DESTDIR = $(PREFIX)/$(plan10Programs)/$(PROGRAM)/$(VERSION)
 INSTALL_DIR = install -d
 INSTALL_FILE = install
 man_files = $(shell grep -l Parse_Options bin/* | xargs -i echo {}.1)
-scripts = ApplyVariables Compile FetchArchive GoboPath2Ruby NewVersion PrepareProgram  AutoPatch ContributeRecipe FiboSandbox NoRecipe RecipeLint UnionSandbox ColorMake EditRecipe GetRecipe MakeRecipe PackRecipe SandboxInstall UpdateRecipes 
+scripts = ApplyVariables Compile FetchArchive Plan10Path2Ruby NewVersion PrepareProgram  AutoPatch ContributeRecipe FiboSandbox NoRecipe RecipeLint UnionSandbox ColorMake EditRecipe GetRecipe MakeRecipe PackRecipe SandboxInstall UpdateRecipes 
 
 .PHONY: all clean install uninstall
 
@@ -16,7 +16,8 @@ manuals: $(man_files)
 
 $(man_files): %.1: %
 	@echo "Generating man page $@"
-	help2man --name=" " --source="GoboLinux" --no-info $< --output $@
+	help2man --name=" " --source="Plan10
+Linux" --no-info $< --output $@
 
 clean_manuals:
 	@echo "Cleaning man pages"
